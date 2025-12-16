@@ -1,29 +1,38 @@
-from flask import Flask, render_template, request
-from flaskmysql import MySQL
+from flask import (
+Flask,
+render_template, 
+request 
+)
+import mysql.connector
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Seg25@300514'
-app.config['MYSQL_DB'] = 'STECHINFO'
+mydb =mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Seg25@300514",
+    database="STECHINFO"
+)
+cursor=mydb.cursor()
 
-mysql = MySQL(app)
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    if request.method == 'POST':
+ return render_template('index.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
         name = request.form['nom complet']
         email = request.form['email']
         phone = request.form[ 'Téléphone']
         service = request.form[ 'service']
         message = request.form['message']
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO messages(name, email, phone, service, message) VALUES(%s, %s, %s, %s, %s)", (name, email, phone, service, message))
-        mysql.connection.commit()
-        cur.close()
+        
+        sql="INSERT INTO contacts (name, email, phone, service, message) VALUES (%s, %s, %s, %s, %s)"
+        val=(name, email, phone, service, message)
+        cursor.execute(sql, val)
+        mydb.commit()
+
         return 'Message envoyé avec succès !'
-    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
