@@ -27,7 +27,7 @@ def submit():
         service = request.form[ 'service']
         message = request.form['message']
         
-        sql="INSERT INTO contacts (name, email, phone, service, message) VALUES (%s, %s, %s, %s, %s)"
+        sql="INSERT INTO MESSAGES (name, email, phone, service, message) VALUES (%s, %s, %s, %s, %s)"
         val=(name, email, phone, service, message)
         cursor.execute(sql, val)
         mydb.commit()
