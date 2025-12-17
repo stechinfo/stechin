@@ -821,16 +821,19 @@
                 <div class="contact-form">
                     <form action="http://localhost:5000/submit" method="POST">
                         <div class="form-group">
-                             <input type="text" name="name" placeholder="Nom" required>
+                            <label for="name">Nom Complet</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                             <input type="email" name="email" placeholder="Email"required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                             <input type="tel" name="phone" placeholder="Téléphone" required>
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone"class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="texte" name="service" placeholder="Service demandé" required>
+                            <label for="service">Service demandé</label>
                             <select id="service" class="form-control">
                                 <option value="">Sélectionnez un service</option>
                                 <option value="maintenance">Maintenance informatique</option>
@@ -840,13 +843,14 @@
                                 <option value="antennes">Antennes paraboliques</option>
                                 <option value="reparation">Réparation de téléphones</option>
                                 <option value="vente">Achat de produits</option>
-                                <option value="autre">Autres</option>
+                                <option value="autre">Autre</option>
                             </select>
                         </div>
                         <div class="form-group">
-                                 <textarea name="message" placeholder="Message" required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message"class="form-control" required></textarea>
                         </div>
-                        <button type="submit">Envoyer</button>
+                        <button type="submit">Envoyer le message</button>
                     </form>
                 </div>
             </div>
