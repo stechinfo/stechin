@@ -11,7 +11,7 @@ mydb =mysql.connector.connect(
     host="localhost",
     user="sergeuser",
     password="Serge2530@",
-    database="STECHINFO"
+    database="stechinfodb"
 )
 cursor=mydb.cursor()
 
