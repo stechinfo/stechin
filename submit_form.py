@@ -25,7 +25,11 @@ def submit():
     cursor.close()
     conn.close()
 
-    return redirect('/merci.html')
+    return "Message envoyé avec succès"
+
+    except Exception as e:
+  return f"Erreur : {e}"
+
 
 if __name__ == '__main__':
     app.run(debug=True)
