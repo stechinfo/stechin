@@ -33,14 +33,14 @@ def submit():
         cursor.close()
         conn.close()
 
-        return redirect('/success')
+        return redirect('/merci')
 
     except Exception as e:
         return f"Erreur serveur : {str(e)}", 500
 
-@app.route('/success')
-def success():
-    return "Message envoyé avec succès ✅"
+@app.route('/merci')
+def merci():
+    return render_template("merci.hml")
 
 if __name__ == '__main__':
     app.run(debug=True)
